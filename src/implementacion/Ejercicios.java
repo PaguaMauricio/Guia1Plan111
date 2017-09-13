@@ -3,6 +3,7 @@ package implementacion;
 import static java.lang.Math.sqrt;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Ejercicios {
 
@@ -343,9 +344,116 @@ public class Ejercicios {
         }
         if(esLaboral==true){
             this.mostrar("El dia "+dia.toLowerCase()+" es laboral.");
-        }else this.mostrar("El dia "+dia+" no es laboral.");
-        
+        }else this.mostrar("El dia "+dia+" no es laboral.");   
     }
+    
+    /*
+    Ejercicio 20
+    Pide por teclado dos números y genera 10 números aleatorios entre esos números.
+    */
+    public void ej20 (){
+        int a, b;
+        this.mostrar("Ingrese un numero: ");
+        a = this.io().nextInt();
+        this.mostrar("Ingrese otro numero: ");
+        b = this.io().nextInt();
+        this.mostrar("Aqui tienes 10 numeros aleatorios entre a y b" );
+        for(int i=1;i<=10;i++){
+            this.mostrar(""+ThreadLocalRandom.current().nextInt(a, b+1));
+        }
+    }
+    
+    /*
+    Ejercicio 21
+    Pide por teclado un número entero positivo (debemos controlarlo) y muestra el
+    número de cifras que tiene.
+    */
+    public void ej21(){
+        int num = 0;
+        do{
+            this.mostrar("Ingrese un numero entero positivo: ");
+            try{
+                num = this.io().nextInt();
+            }catch(InputMismatchException ime){
+                this.mostrar("NUMERO ENTERO DIJE!!!");
+            }
+            if(num<=0){
+                this.mostrar("debe ser mayor a cero '0'!!!");
+                num = 0;
+            }
+        }while(num==0);
+    }
+    
+    /*
+    Ejercicio 22
+    Pide un número por teclado e indica si es un número primo o no.
+    */
+    public void ej22(){
+        int num=0;
+        int a=0;
+        this.mostrar("Ingrese un numero: ");
+        try{
+                num = this.io().nextInt();
+            }catch(InputMismatchException ime){
+                this.mostrar("Ni siquiera es entero. No es numero primo");
+            }
+        int aux;
+        for(int i=1;i<(num+1);i++){
+         if(num%i==0){
+             a++;
+            }
+         }
+         if(a!=2){
+              this.mostrar("No es Primo");
+            }else{
+                this.mostrar("Es Primo");
+         }
+    }
+    
+    /*
+    Ejercicio 22
+    Muestra los números primos entre 1 y 100.
+    */
+    public void ej23(){
+        for(int num = 1; num <100; num++){
+            int a = 0;
+            for(int i=1;i<(num+1);i++){
+             if(num%i==0){
+                 a++;
+                }
+            }
+            if(a==2){
+                 this.mostrar(""+num);
+               }
+        }
+    }
+    
+    /*
+    Ejercicio 23
+    Del siguiente String “La lluvia en Corrientes fue una pesadilla durante los meses de
+abril y mayo” cuenta cuantas vocales hay en total.
+    */
+    public void ej24(){
+        this.mostrar("El siguiente texto: ");
+        this.mostrar("La lluvia en Corrientes fue una pesadilla durante los meses de abril y mayo");
+        String miTexto = "La lluvia en Corrientes fue una pesadilla durante los meses de abril y mayo";
+        this.mostrar("tiene "+this.contarVocales(miTexto)+" vocales");
+    }
+    public int contarVocales(String texto){
+        int contador=0;
+        for(int i=0;i<texto.length();i++){
+            char a = texto.toUpperCase().charAt(i);
+            if(a  == 'A'||a  == 'E'||a  == 'I'||a  == 'O'||a  == 'U'){
+                contador++;
+            }
+        }
+        return contador;
+    }
+    
+    /*
+    Ejercicio 25
+    Reemplaza todas las a del String anterior por una e.
+    */
     
     /*
     CLASES AUXILIARES
@@ -353,7 +461,7 @@ public class Ejercicios {
     public static void main(String [] args) {
         Ejercicios ej = new Ejercicios();
         //ej.ej1();
-        ej.ej19();
+        ej.ej24();
     }
     private void mostrar(String texto){
         System.out.println(texto);
