@@ -454,6 +454,54 @@ abril y mayo” cuenta cuantas vocales hay en total.
     Ejercicio 25
     Reemplaza todas las a del String anterior por una e.
     */
+    public void ej25(){
+        this.mostrar("La lluvia en Corrientes fue una pesadilla durante los meses de abril y mayo");
+        String texto = "La lluvia en Corrientes fue una pesadilla durante los meses de abril y mayo";
+        char [] vocales = {'a','e','i','o','u'};
+        for(char c: vocales){
+            texto = texto.replace(c, 'e');
+        }
+        this.mostrar(texto+"");
+    }
+    
+    /*
+    Ejercicio 26
+     Recorre el mismo String y transforma cada carácter a su código ASCII.
+    Muéstralos en línea recta, separados por un espacio entre cada carácter. 
+    */
+    public void ej26(){
+        this.mostrar("La lluvia en Corrientes fue una pesadilla durante los meses de abril y mayo");
+        String texto = "La lluvia en Corrientes fue una pesadilla durante los meses de abril y mayo";
+        String textoASCII = this.stringToASCII(texto);
+        this.mostrar(""+textoASCII);
+    }
+        
+    public String stringToASCII(String t){
+        String tASCII;
+        if(t.length()==0){
+            return "";
+        }else{
+            tASCII = (int)t.charAt(0)+ " " + this.stringToASCII(t.substring(1));
+        }
+        return tASCII;
+    }
+    
+    /*
+    Ejercicio 27
+     Crea una aplicación llamada CalculadoraPolacaInversaApp, 
+    nos pedirá 2 operandos (int) y un signo aritmético (String), 
+    según este último se realizara la operación correspondiente. 
+    Al final mostrara el resultado. Hacer tantas operaciones como 
+    desee el usuario Los signos aritméticos disponibles son: 
+    +: suma los dos operandos. 
+    -: resta los operandos. 
+    *: multiplica los operandos. 
+    /: divide los operandos, este debe dar un resultado con decimales (double) 
+    ^:  1º operando como base y 2º como exponente. 
+    %:  módulo, resto de la división entre operando1 y operando2. 
+    */
+        
+    
     
     /*
     CLASES AUXILIARES
@@ -461,7 +509,7 @@ abril y mayo” cuenta cuantas vocales hay en total.
     public static void main(String [] args) {
         Ejercicios ej = new Ejercicios();
         //ej.ej1();
-        ej.ej24();
+        ej.ej26();
     }
     private void mostrar(String texto){
         System.out.println(texto);
