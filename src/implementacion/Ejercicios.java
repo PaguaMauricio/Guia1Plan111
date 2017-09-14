@@ -488,7 +488,7 @@ abril y mayo” cuenta cuantas vocales hay en total.
     
     /*
     Ejercicio 27
-     Crea una aplicación llamada CalculadoraPolacaInversaApp, 
+    Crea una aplicación llamada CalculadoraPolacaInversaApp, 
     nos pedirá 2 operandos (int) y un signo aritmético (String), 
     según este último se realizara la operación correspondiente. 
     Al final mostrara el resultado. Hacer tantas operaciones como 
@@ -500,8 +500,37 @@ abril y mayo” cuenta cuantas vocales hay en total.
     ^:  1º operando como base y 2º como exponente. 
     %:  módulo, resto de la división entre operando1 y operando2. 
     */
-        
+    public void calculadoraPolacaInversaApp(){
+        int a, b;
+        String operacion="";
+        while(false==(operacion.equals("salir"))){
+            try{
+            this.mostrar("a= ");
+            a = this.io().nextInt();
+            this.mostrar("b= ");
+            b = this.io().nextInt();
+            this.mostrar("operacion= ");
+            operacion = this.io().nextLine();
+            this.mostrar("= " + this.calcular(a, b, operacion));
+            }catch(InputMismatchException ime){
+                operacion = "salir";
+            }
+        }
+    }
     
+    public double calcular(int a, int b, String op){
+        switch(op.charAt(0)){
+            case 's': return 0;
+            case 'S': return 0;
+            case '+': return a+b;
+            case '-': return a-b;
+            case '*': return a*b;
+            case '/': return a/b;
+            case '^': return Math.pow(a, b);
+            case '%': return a%b;
+            default: return 0;
+        }
+    }
     
     /*
     CLASES AUXILIARES
@@ -509,7 +538,7 @@ abril y mayo” cuenta cuantas vocales hay en total.
     public static void main(String [] args) {
         Ejercicios ej = new Ejercicios();
         //ej.ej1();
-        ej.ej26();
+        ej.calculadoraPolacaInversaApp();
     }
     private void mostrar(String texto){
         System.out.println(texto);
